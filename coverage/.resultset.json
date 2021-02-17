@@ -309,6 +309,7 @@
       "/Users/kristastadler/messenger_api/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          1,
           null
         ]
       },
@@ -319,26 +320,29 @@
           1,
           1,
           1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           1,
           null,
+          null,
+          1,
+          null,
           1,
           1,
           null,
-          null
-        ]
-      },
-      "/Users/kristastadler/messenger_api/app/serializers/message_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
           null
         ]
       }
     },
-    "timestamp": 1613537809
+    "timestamp": 1613538698
   }
 }
