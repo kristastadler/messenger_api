@@ -1,7 +1,7 @@
 class Api::V1::MessagesController < ApplicationController
 
   def create
-    message = Message.create(message_params)
+    message = Message.create(permitted_params)
     if message.sender != nil && message.recipient != nil
       render json: MessageSerializer.new(message)
     else
@@ -20,7 +20,7 @@ class Api::V1::MessagesController < ApplicationController
 
   private
 
-  def message_params
+  def permitted_params
     params.permit(:content, :sender_id, :recipient_id)
   end
 end
