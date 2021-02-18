@@ -12,6 +12,12 @@ class Api::V1::MessagesController < ApplicationController
     end
   end
 
+  def show
+    recipient = User.find(params[:recipient_id])
+    messages = recipient.sender_specific_messages(params[:sender], params[:limit])
+    render json: MessageSerializer.new(messages)
+  end
+
   private
 
   def message_params
