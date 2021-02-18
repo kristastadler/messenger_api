@@ -5,6 +5,8 @@ class User < ApplicationRecord
   def sender_specific_messages(sender, limit)
     if limit == "days"
       self.messages.where(sender_id: sender).where('created_at > ?', 30.days.ago)
+    elsif limit == "count"
+      self.messages.where(sender_id: sender).order(created_at: :desc).limit(100)
     end
   end
 end

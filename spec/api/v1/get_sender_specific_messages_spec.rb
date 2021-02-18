@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'faker'
 
 describe "Messages API" do
   it "can get all of a recipient's messages from a specific sender for the last 30 days" do
@@ -35,8 +36,32 @@ describe "Messages API" do
     body = JSON.parse(response.body)
     expect(response).to be_successful
     expect(body["data"].length).to eq(3)
-
   end
 
+  it "can get the last 100 messages to a recipient from a specific sender" do
+    frodo = User.create!(username: "shireguy")
+    sam = User.create!(username: "potatolover")
+    pippin = User.create!(username: "sonofatook")
 
+    120.times do |i|
+      m = Message.create(
+        content: Faker::Movies::LordOfTheRings.quote,
+        sender_id: sam.id,
+        recipient_id: frodo.id
+      )
+    end
+
+    5.times do |i|
+      m = Message.create(
+        content: Faker::Movies::LordOfTheRings.quote,
+        sender_id: pippin.id,
+        recipient_id: frodo.id
+      )
+    end
+
+    get "/api/v1/messages/#{frodo.id}?sender=#{sam.id}&limit=count"
+    body = JSON.parse(response.body)
+    expect(response).to be_successful
+    expect(body["data"].length).to eq(100)
   end
+end

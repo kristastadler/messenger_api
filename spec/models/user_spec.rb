@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'faker'
 
 RSpec.describe User, type: :model do
   describe "relationships" do
@@ -42,6 +43,37 @@ RSpec.describe User, type: :model do
       expect(frodo.sender_specific_messages(sam.id, "days")).to_not include(message_4)
       expect(frodo.sender_specific_messages(sam.id, "days")).to_not include(pippin_message)
       expect(frodo.sender_specific_messages(pippin.id, "days")).to eq([pippin_message])
+    end
+    it "can get the last 100 sender specific messages" do
+      frodo = User.create!(username: "shireguy")
+      sam = User.create!(username: "potatolover")
+      pippin = User.create!(username: "sonofatook")
+
+      120.times do |i|
+        m = Message.create(
+          content: Faker::Movies::LordOfTheRings.quote,
+          sender_id: sam.id,
+          recipient_id: frodo.id
+        )
+      end
+
+      message = Message.create!(
+        content: Faker::Movies::LordOfTheRings.quote,
+        sender_id: sam.id,
+        recipient_id: frodo.id,
+        created_at: "2021-01-10T05:01:52.194Z",
+        updated_at: "2021-01-10T05:01:52.194Z"
+      )
+
+      5.times do |i|
+        m = Message.create(
+          content: Faker::Movies::LordOfTheRings.quote,
+          sender_id: pippin.id,
+          recipient_id: frodo.id
+        )
+      end
+      expect(frodo.sender_specific_messages(sam.id, "count").length).to eq(100)
+      expect(frodo.sender_specific_messages(pippin.id, "count").length).to eq(5)
     end
   end
 end

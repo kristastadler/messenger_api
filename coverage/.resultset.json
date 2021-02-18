@@ -344,6 +344,7 @@
       "/Users/kristastadler/messenger_api/spec/models/user_spec.rb": {
         "lines": [
           1,
+          1,
           null,
           1,
           1,
@@ -388,6 +389,37 @@
           1,
           1,
           null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          120,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          5,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
           null,
           null
         ]
@@ -399,8 +431,10 @@
           1,
           null,
           1,
+          10,
           7,
-          7,
+          3,
+          3,
           null,
           null,
           null
@@ -430,9 +464,9 @@
           null,
           null,
           1,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
           null,
           null,
           1,
@@ -453,6 +487,6 @@
         ]
       }
     },
-    "timestamp": 1613623840
+    "timestamp": 1613626745
   }
 }
