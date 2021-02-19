@@ -21,7 +21,9 @@ This project is a backend Rails API. The endpoints are designed to support a web
 
 ### Running the Test Suite
 - `bundle exec rspec` can be run from the command line to see test coverage of the API.
-- SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing, especially around the GET `messages/:recipient_id` endpoint. This endpoint would benefit from additional error handling to manage scenarios where an invalid recipient_id or sender_id are passed in.
+- SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing, especially in the following areas:
+  - The GET `messages/:recipient_id` endpoint would benefit from additional error handling to manage scenarios where an invalid recipient_id is included in the endpoint. Right now, this scenario returns an ActiveRecord::RecordNotFound response.
+  - Additional error handling for when endpoints are invoked without necessary params. Currently, when endpoints are run without necessary information (or with an unknown sender_id), the request is successful, it just returns an empty array in the response. In an ideal state, it would return a more useful error message to aid the web application team with troubleshooting.
 
 ### Endpoints
   - POST `users`
@@ -30,7 +32,7 @@ This project is a backend Rails API. The endpoints are designed to support a web
     - Example Request Body:
     ``{ "username": "brandybuckwild" }``
   - GET `messages`
-    - This endpoint can be used with two different limit param options:
+    - This endpoint must be used with two different limit param options:
       - `messages?limit=days`
         - Description: Returns messages from all senders from the last 30 days
       - `messages?limit=count`
