@@ -35,7 +35,7 @@ This project is a backend Rails application. The endpoints are designed to suppo
         - Description: Returns messages from all senders from the last 30 days
       - `messages?limit=count`
         - Description: Returns the last 100 messages sent by any sender
-  - GET `messages\:recipient_id`
+  - GET `messages/:recipient_id`
     - This endpoint must always include the `sender` param and one of the `limit` param options:
       - `messages/:recipient_id?sender=:sender_id&limit=days`
         - Description: Returns all messages to the recipients from the specific sender from the last 30 days
