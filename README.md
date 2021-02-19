@@ -20,6 +20,11 @@ This project is a backend Rails application. The endpoints are designed to suppo
 - SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing.
 
 ### Endpoints
+  - POST `users`
+    - Description: Posts a new user to the Messages API PostgreSQL database
+    - Requires `username` to be sent in the request body as JSON
+    - Example Request Body:
+    ``{ "username": "brandybuckwild" }``
   - GET `messages`
     - This endpoint can be used with two different limit param options:
       - `messages?limit=days`
@@ -37,3 +42,7 @@ This project is a backend Rails application. The endpoints are designed to suppo
     - Requires `content`, `sender_id`, and `recipient_id` to be sent in the request body as JSON
     - Example Request Body:
     ``{ "content": "Boil 'em, mash 'em, stick 'em in a stew!", "sender_id": 1, "recipient_id": 2 }``
+
+### Notes About Invoking the API
+  - This project includes database seeds that can be used in the API calls. For seed details, reference "/db/seeds.rb"
+  - This project also includes added functionality to send a POST request and create a new user. Once new users have been created, their user ids can also be used to make post requests to the `messages` endpoint.   
