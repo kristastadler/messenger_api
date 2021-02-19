@@ -25,11 +25,12 @@ This project is a backend Rails application. The endpoints are designed to suppo
 ### Endpoints
   - `messages`
     - Description: Returns messages from all senders limited to either the last 30 days or last 100 messages sent
-    - Limit Param Options are:
-      - `days` if messages from the last 30 days are needed
-      - `count` if last 100 messages are needed
+    - Param Requirements
+      - `limit` param is required and can be set to:
+        - `days` if messages from the last 30 days are needed
+        - `count` if last 100 messages are needed
     - Param Formatting:
       - For `days`:
-        ``limit=days``
+        - ``limit=days``
       - For `count`:
-        ``limit=count`` 
+        - ``limit=count`` 
