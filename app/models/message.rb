@@ -5,6 +5,8 @@ class Message < ApplicationRecord
   def self.get_messages_from_all_senders(limit)
     if limit == "days"
       self.where('created_at > ?', 30.days.ago)
-    end   
+    elsif limit == "count"
+      self.order(created_at: :desc).limit(100)
+    end
   end
 end
