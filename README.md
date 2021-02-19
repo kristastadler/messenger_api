@@ -1,24 +1,35 @@
-# README
+# Messenger API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Overview
 
-Things you may want to cover:
+This project is a backend Rails application. The endpoints are designed to support a web-application that enables tow users to send short text messages to each other, like Facebook Messages app or Google Chat.
 
-* Ruby version
+### Author
 
-* System dependencies
+- [Krista Stadler](https://github.com/kristastadler)
 
-* Configuration
+### Local Setup & Invoking the API
 
-* Database creation
+- Clone
+- bundle
+- rails db:{create,migrate,seed}
+- rails s
+- All endpoints are available at: `http://localhost:3000/api/v1`
+- Requests to the API can be made using a tool like Postman or by using curl on the command line.
 
-* Database initialization
+### Running the Test Suite
 
-* How to run the test suite
+- `bundle exec rspec` can be run from the command line to see test coverage of the API.
+- SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Endpoints
+  - `messages`
+    - Description: Returns messages from all senders limited to either the last 30 days or last 100 messages sent
+    - Limit Param Options are:
+      - `days` if messages from the last 30 days are needed
+      - `count` if last 100 messages are needed
+    - Param Formatting:
+      - For `days`:
+        ``limit=days``
+      - For `count`:
+        ``limit=count`` 
