@@ -5,11 +5,9 @@
 This project is a backend Rails application. The endpoints are designed to support a web-application that enables tow users to send short text messages to each other, like Facebook Messages app or Google Chat.
 
 ### Author
-
 - [Krista Stadler](https://github.com/kristastadler)
 
 ### Local Setup & Invoking the API
-
 - Clone
 - bundle
 - rails db:{create,migrate,seed}
@@ -18,7 +16,6 @@ This project is a backend Rails application. The endpoints are designed to suppo
 - Requests to the API can be made using a tool like Postman or by using curl on the command line.
 
 ### Running the Test Suite
-
 - `bundle exec rspec` can be run from the command line to see test coverage of the API.
 - SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing.
 
