@@ -2,7 +2,7 @@
 
 ### Overview
 
-This project is a backend Rails application. The endpoints are designed to support a web-application that enables tow users to send short text messages to each other, like Facebook Messages app or Google Chat.
+This project is a backend Rails API. The endpoints are designed to support a web-application that enables two users to send short text messages to each other, like Facebook Messages app or Google Chat.
 
 ### Author
 - [Krista Stadler](https://github.com/kristastadler)
@@ -21,7 +21,7 @@ This project is a backend Rails application. The endpoints are designed to suppo
 
 ### Running the Test Suite
 - `bundle exec rspec` can be run from the command line to see test coverage of the API.
-- SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing.
+- SimpleCov test coverage is at 100% for this project, but given more time, I would add more sad path testing, especially around the GET `messages/:recipient_id` endpoint. This endpoint would benefit from additional error handling to manage scenarios where an invalid recipient_id or sender_id are passed in.
 
 ### Endpoints
   - POST `users`
