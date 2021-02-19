@@ -43,7 +43,7 @@ describe "Messages API" do
     expect(body["data"].length).to eq(4)
   end
 
-  xit "can get the last 100 messages to a recipient from a specific sender" do
+  it "can get the last 100 messages to a recipient from a specific sender" do
     frodo = User.create!(username: "shireguy")
     sam = User.create!(username: "potatolover")
     pippin = User.create!(username: "sonofatook")

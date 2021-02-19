@@ -5,4 +5,47 @@ RSpec.describe Message, type: :model do
     it {should belong_to :sender}
     it {should belong_to :recipient}
   end
+
+  describe "class methods" do
+    it "can get all messages from the last 30 days" do
+      frodo = User.create!(username: "shireguy")
+      sam = User.create!(username: "potatolover")
+      pippin = User.create!(username: "sonofatook")
+
+      message_1 = Message.create!(content: "You're my best friend, Frodo!",
+                                  sender_id: pippin.id,
+                                  recipient_id: frodo.id,
+                                  created_at: "2021-01-04T05:01:52.194Z",
+                                  updated_at: "2021-01-04T05:01:52.194Z")
+      message_2 = Message.create!(content: "When do we leave for Mordor?",
+                                  sender_id: sam.id,
+                                  recipient_id: frodo.id,
+                                  created_at: "2021-02-10T05:01:52.194Z",
+                                  updated_at: "2021-02-10T05:01:52.194Z")
+      pippin_message = Message.create!(content: "oooh, shiny ball!",
+                                       sender_id: pippin.id,
+                                       recipient_id: frodo.id,
+                                       created_at: "2021-02-10T05:01:52.194Z",
+                                       updated_at: "2021-02-10T05:01:52.194Z")
+      message_3 = Message.create!(content: "I miss potatoes.",
+                                  sender_id: sam.id,
+                                  recipient_id: frodo.id,
+                                  created_at: "2021-01-01T05:01:52.194Z",
+                                  updated_at: "2021-01-01T05:01:52.194Z")
+      message_4 = Message.create!(content: "Isn't Gandalf visiting soon?",
+                                  sender_id: sam.id,
+                                  recipient_id: frodo.id,
+                                  created_at: "2021-02-10T05:01:52.194Z",
+                                  updated_at: "2021-02-10T05:01:52.194Z")
+      message_5 = Message.create!(content: "We leave tomorrow, Sam",
+                                  sender_id: frodo.id,
+                                  recipient_id: sam.id,
+                                  created_at: "2021-02-10T05:01:53.194Z",
+                                  updated_at: "2021-02-10T05:01:53.194Z")
+      expect(Message.get_messages_from_all_senders("days").length).to eq(4)
+      expect(Message.get_messages_from_all_senders("days")).to_not include(message_1)
+      expect(Message.get_messages_from_all_senders("days")).to_not include(message_3)
+    end
+  end
+
 end

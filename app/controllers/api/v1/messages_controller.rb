@@ -1,5 +1,16 @@
 class Api::V1::MessagesController < ApplicationController
 
+  def index
+    messages = Message.get_messages_from_all_senders(params[:limit])
+    render json: MessageSerializer.new(messages)
+  end
+
+  def show
+    recipient = User.find(params[:recipient_id])
+    messages = recipient.sender_specific_messages(params[:sender], params[:limit])
+    render json: MessageSerializer.new(messages)
+  end
+
   def create
     message = Message.create(permitted_params)
     if message.sender != nil && message.recipient != nil
@@ -10,12 +21,6 @@ class Api::V1::MessagesController < ApplicationController
       }
       render json: create_error, status: 404
     end
-  end
-
-  def show
-    recipient = User.find(params[:recipient_id])
-    messages = recipient.sender_specific_messages(params[:sender], params[:limit])
-    render json: MessageSerializer.new(messages)
   end
 
   private
